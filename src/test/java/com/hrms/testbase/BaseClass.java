@@ -7,7 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+
 import java.util.concurrent.TimeUnit;
 
 public class BaseClass {
@@ -30,10 +33,13 @@ public class BaseClass {
                 break;
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.setHeadless(true);
+                driver = new FirefoxDriver(firefoxOptions);
                 break;
             case "internet":
                 WebDriverManager.iedriver().setup();
+                InternetExplorerOptions internetExplorerOptions = new InternetExplorerOptions();
                 driver = new InternetExplorerDriver();
                 break;
             default:
